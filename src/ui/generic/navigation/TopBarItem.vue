@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row items-center">
+  <div class="flex flex-row items-center hover:underline">
     <p class="font-medium text-md">
       <slot />
     </p>

@@ -10,8 +10,8 @@ export class ShopifyProductsDataSource {
     // https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api/api-exploration/graphiql-storefront-api
 
     private popularProductsQuery = `
-        query PopularProductsQuery() {
-            products(first: 10, sortKey: BEST_SELLING) {
+        query PopularProductsQuery($amount: Int!) {
+            products(first: $amount, sortKey: BEST_SELLING) {
                 edges {
                     node {
                         handle
@@ -35,8 +35,15 @@ export class ShopifyProductsDataSource {
         }
     `;
 
-    public async getPopularProducts(): Promise<Product[]> {
-        const response = await shopifyClient.request(this.popularProductsQuery);
+    public async getPopularProducts(amount: number): Promise<Product[]> {
+        const response = await shopifyClient.request(
+            this.popularProductsQuery,
+            {
+                variables: {
+                    amount: amount,
+                }
+            }
+        );
         return this.mapper.toProducts(response.data)
     }
 

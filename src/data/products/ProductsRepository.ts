@@ -3,18 +3,10 @@ import {ShopifyProductsDataSource} from "../../shopify/products/ShopifyProductsD
 
 export class ProductsRepository {
 
-    private popularProductsStorage: Product[] | null = null
-
     private dataSource = new ShopifyProductsDataSource()
 
-    public async getPopularProducts(): Promise<Product[]> {
-        if (this.popularProductsStorage == null) {
-            const result = await this.dataSource.getPopularProducts()
-            this.popularProductsStorage = result
-            return result
-        } else {
-            return this.popularProductsStorage
-        }
+    public async getPopularProducts(amount: number): Promise<Product[]> {
+        return this.dataSource.getPopularProducts(amount)
     }
 
     public async getProductById(id: string): Promise<Product> {

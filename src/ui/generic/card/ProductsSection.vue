@@ -3,7 +3,7 @@
     <div class="flex flex-row justify-between w-full">
       <h4 class="font-semibold text-2xl">{{ title }}</h4>
 
-      <a class="text-md font-medium">View more</a>
+      <a :href="viewMoreUrl" v-if="viewMoreUrl" class="text-md font-medium hover:underline">View more</a>
     </div>
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
@@ -15,6 +15,7 @@
 <script setup lang="ts">
 interface Props {
   title: string;
+  viewMoreUrl?: string;
 }
 
 defineProps<Props>();

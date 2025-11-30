@@ -12,7 +12,7 @@
       <Card class="h-[500px] w-full" />
     </div>
 
-    <ProductsSection title="Popular">
+    <ProductsSection title="Popular" view-more-url="/shop">
       <ProductCard v-for="product in popularProducts" :product="product" />
     </ProductsSection>
 
@@ -37,7 +37,7 @@ const productsService = new ProductsService();
 const popularProducts = ref<Product[]>([])
 
 async function loadPopularProducts() {
-  popularProducts.value = await productsService.getPopularProducts()
+  popularProducts.value = await productsService.getPopularProducts(4)
 }
 
 loadPopularProducts()
