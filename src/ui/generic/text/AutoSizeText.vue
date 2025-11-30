@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, nextTick, onBeforeUnmount } from 'vue'
+import { ref, onMounted, nextTick, onBeforeUnmount } from 'vue'
 
 const container = ref<HTMLElement | null>(null)
 const textEl = ref<HTMLElement | null>(null)
