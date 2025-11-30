@@ -14,7 +14,7 @@ export class ShopifyProductsDataSource {
             products(first: 10, sortKey: BEST_SELLING) {
                 edges {
                     node {
-                        id
+                        handle
                         title
                         description
                         priceRange {
@@ -38,5 +38,39 @@ export class ShopifyProductsDataSource {
     public async getPopularProducts(): Promise<Product[]> {
         const response = await shopifyClient.request(this.popularProductsQuery);
         return this.mapper.toProducts(response.data)
+    }
+
+    private productByIdQuery = `
+        query ProductByHandle($handle: String!) {
+            product(handle: $handle) {
+                handle
+                title
+                description
+                priceRange {
+                    minVariantPrice {
+                        amount
+                    }
+                }
+                images(first:10) {
+                    edges {
+                        node {
+                            url
+                        }
+                    }
+                }
+            }
+        }
+    `
+
+    public async getProductById(id: string): Promise<Product> {
+        const response = await shopifyClient.request(
+            this.productByIdQuery,
+            {
+                variables: {
+                    handle: id,
+                }
+            }
+        );
+        return this.mapper.toProduct(response.data.product)
     }
 }

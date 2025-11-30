@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-3 w-full cursor-pointer group">
+  <a :href="`/shop/product/${product.id}`" class="flex flex-col gap-3 w-full cursor-pointer group">
     <div class="bg-surface-low rounded-3xl w-full aspect-square relative overflow-clip">
       <div
           class="absolute w-full h-full bg-cover transition-opacity opacity-100 group-hover:opacity-0"
@@ -16,7 +16,7 @@
       <h4 class="font-bold text-2xl">{{ product.name }}</h4>
       <p class="font-medium text-2xl">€{{ product.price }}</p>
     </div>
-  </div>
+  </a>
 </template>
 
 <script setup lang="ts">

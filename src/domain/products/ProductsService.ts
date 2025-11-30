@@ -8,4 +8,8 @@ export class ProductsService {
     public async getPopularProducts(): Promise<Product[]> {
         return this.repository.getPopularProducts()
     }
+
+    public async getProductById(id: string): Promise<Product> {
+        return this.repository.getProductById(id)
+    }
 }

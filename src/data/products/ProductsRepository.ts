@@ -16,4 +16,8 @@ export class ProductsRepository {
             return this.popularProductsStorage
         }
     }
+
+    public async getProductById(id: string): Promise<Product> {
+        return this.dataSource.getProductById(id)
+    }
 }
