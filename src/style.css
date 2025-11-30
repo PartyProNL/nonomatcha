@@ -19,3 +19,9 @@
     --spacing-sides: 8rem; /* 128px */
     --spacing-navbar: 7.5rem; /* 120px */
 }
+
+@media (max-width: 1024px) {
+    :root {
+        --spacing-sides: 1rem;
+    }
+}

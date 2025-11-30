@@ -2,7 +2,7 @@
   <div class="flex flex-col pb-6 text-surface-low">
     <div class="w-full h-16 rounded-b-full bg-background" />
 
-    <div class="px-sides pt-12 grid grid-cols-3 gap-x-2.5 gap-y-5">
+    <div class="px-16 md:x-sides pt-12 grid grid-cols-1 md:grid-cols-3 gap-x-2.5 gap-y-5">
       <div>
         <div class="flex flex-row py-0.75 items-center gap-2">
           <IconLogo class="size-8" />
@@ -10,7 +10,7 @@
         </div>
       </div>
 
-      <div class="h-24" />
+      <div class="h-24 hidden md:block" />
 
       <div class="flex flex-row gap-1.5">
         <a href="https://tiktok.com/" class="bg-surface-low text-below-background p-2 rounded-full mb-auto">
